@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Краткая карточка товара</title>
+  <link href="../../static/css/styles.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <header class="container header">
+    <div class="header__wrapper">
+      <a href="/" class="header__logo-link">Яблочная лавка</a>
+      <nav class="header__nav">
+        <ul class="header__menu">
+          <li class="header__menu-item"><a href="/" class="header__menu-link">Главная</a></li>
+          <li class="header__menu-item"><a href="/search" class="header__menu-link">Поиск</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <section class="item-card">
+      <h1 class="item-card__title title">{{ entity.name }}</h1>
+      <a href="/card/{{ entity.id }}" class="item-card__more">Показать в полном формате</a>
+      <div class="item-card__card">
+        <div class="item-card__img-wrapper">
+          <img src="../../static/{{ entity.img }}" srcset="../../static/{{ entity.img_set }}" alt="" class="item-card__img" />
+        </div>
+        <p class="item-card__info">Модель: {{ entity.model }}</p>
+        <p class="item-card__info">Год выпуска: {{ entity.year }}</p>
+        <p class="item-card__info">Цена: {{ entity.price }}</p>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

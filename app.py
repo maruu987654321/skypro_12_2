@@ -40,6 +40,15 @@ def card(eid: int):
             if ent["id"] == eid:
                 return render_template("card_full.html", entity=ent)
 
+@app.route('/card/<int:eid>/short')
+def card_short(eid: int):
+    with open('entities.json', encoding="utf-8") as f:
+        entities = json.load(f)
+        for ent in entities:
+            if ent["id"] == eid:
+                return render_template("short_card.html", entity=ent)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
