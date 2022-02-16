@@ -22,18 +22,17 @@
   </header>
   <main class="container">
     <section class="item-card">
-      <h1 class="item-card__title title">Macbook Pro 13, 2021</h1>
+      <h1 class="item-card__title title">{{ entity.name }}</h1>
       <a href="#" class="item-card__more">Показать в кратком формате</a>
       <div class="item-card__card">
         <div class="item-card__img-wrapper">
-          <img src="../static/img/item1.jpg" srcset="../static/img/item1_2x.jpg" alt="" class="item-card__img" />
-        </div>
-        <p class="item-card__info">Модель: macbook pro</p>
-        <p class="item-card__info">Год выпуска: 2021</p>
-        <p class="item-card__info">CPU: i9 </p>
-        <p class="item-card__info">RAM: 32GB</p>
-        <p class="item-card__info">GPU: radeon d3</p>
-        <p class="item-card__info">Цена: 200 000 рублей </p>
+          <img src="../static/{{ entity.img }}" srcset="../static/{{ entity.img_set }}" alt="" class="item-card__img" />        </div>
+        <p class="item-card__info">Модель: {{ entity.model }}</p>
+        <p class="item-card__info">Год выпуска: {{ entity.year }}</p>
+        <p class="item-card__info">CPU: {{ entity.cpu }} </p>
+        <p class="item-card__info">RAM: {{ entity.ram }}</p>
+        <p class="item-card__info">GPU: {{ entity.video }}</p>
+        <p class="item-card__info">Цена: {{ entity.price }} </p>
       </div>
     </section>
   </main>
