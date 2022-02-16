@@ -1,10 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>
+    <link href="../static/css/styles.min.css" rel="stylesheet">
 </head>
-<body>
 
+<body>
+<header class="container header">
+    <div class="header__wrapper">
+        <a href="/" class="header__logo-link">Яблочная лавка</a>
+        <nav class="header__nav">
+            <ul class="header__menu">
+                <li class="header__menu-item"><a href="/" class="header__menu-link">Главная</a></li>
+                <li class="header__menu-item"><a href="/search" class="header__menu-link">Поиск</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main class="container">
+    <section class="items">
+        <div class="pagin-top">
+            <h2>Всего в наличие: {{ total_items }}</h2>
+            <p>Страница {{ current_page }} из {{ l_page }}</p>
+        </div>
+        <div class="items__wrapper">
+            {% for e in entities %}
+            <div class="items__item item">
+                <a href="/card/{{ e.id }}" class="item__wrapper">
+                    <div class="item__img-wrapper">
+                        <img src="../static/{{ e.img }}" srcset="../static/{{ e.img_set }}" alt="" class="item__img" />
+                    </div>
+                    <p class="item__title">{{ e.name }}</p>
+                    <p class="item__descr">{{ e.cpu }} {{ e.ram }} {{ e.video }}</p>
+                    <p class="item__price">{{ e.price }}</p>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="pagin-bottom">
+            <p>
+                Перейти к странице:
+                {% for i in range(1, l_page+1) %}
+                {% if i == current_page %}
+                {{ i }}
+                {% else %}
+                <a href="/paging?p={{ i }}">{{ i }}</a>
+                {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+    </section>
+</main>
 </body>
+
 </html>

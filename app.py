@@ -21,7 +21,7 @@ def paging():
     current_page = int(request.args.get('p', 1))
     l_page = all_items // count_item
     items_show = entities[(current_page - 1) * count_item:current_page * count_item]
-    return render_template("main.html", entities=items_show, all_items=all_items, l_page=l_page)
+    return render_template("main.html", entities=items_show, all_items=all_items, l_page=l_page, current_page=current_page)
 
 
 @app.route('/search')
