@@ -7,9 +7,15 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    count_item = 3
     with open('entities.json', encoding='utf-8') as f:
         entities = json.load(f)
-        return render_template("main-all-items.html", entities=entities)
+    all_items = len(entities)
+    current_page = int(request.args.get('p', 1))
+    l_page = all_items // count_item
+    items_show = entities[(current_page - 1) * count_item:current_page * count_item]
+    return render_template("main-all-items.html", entities=items_show, all_items=all_items, l_page=l_page,
+                           current_page=current_page)
 
 
 @app.route('/paging')

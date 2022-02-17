@@ -22,6 +22,10 @@
   </header>
   <main class="container">
     <section class="items">
+      <div class="pagin-top">
+            <h2>Всего в наличие: {{ all_items }}</h2>
+            <p>Страница {{ current_page }} из {{ l_page }}</p>
+        </div>
       <div class="items__wrapper">
         {% for e in entities %}
         <div class="items__item item">
@@ -36,6 +40,18 @@
         </div>
         {% endfor %}
       </div>
+      <div class="pagin-bottom">
+            <p>
+                Перейти к странице:
+                {% for i in range(1, l_page+1) %}
+                {% if i == current_page %}
+                {{ i }}
+                {% else %}
+                <a href="/paging?p={{ i }}">{{ i }}</a>
+                {% endif %}
+                {% endfor %}
+            </p>
+        </div>
     </section>
   </main>
 </body>
